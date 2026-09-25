@@ -4,7 +4,7 @@ All notable changes to TickRadar are documented in this file. The format is base
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and TickRadar follows
 [Semantic Versioning](https://semver.org/).
 
-## [1.0.0] - Unreleased
+## [1.0.0] - 2026-09-25
 
 ### Added
 
