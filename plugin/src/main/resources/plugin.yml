@@ -1,0 +1,45 @@
+name: TickRadar
+main: dev.stym.tickradar.TickRadarPlugin
+version: '${version}'
+api-version: '26.1'
+folia-supported: true
+description: Region-aware TPS/MSPT for Folia. Folia only.
+authors: [STYM]
+softdepend: [PlaceholderAPI]
+
+permissions:
+  tickradar.use:
+    description: Shows the health of your region with /tickradar.
+    default: true
+  tickradar.display:
+    description: Shows the boss bar, action bar and tab footer of TickRadar.
+    default: op
+  tickradar.alerts:
+    description: Receives TickRadar alerts in game.
+    default: op
+  tickradar.admin.regions:
+    description: Lists the observed regions with /tickradar regions.
+    default: op
+  tickradar.admin.teleport:
+    description: Teleports to a region with /tickradar tp.
+    default: op
+  tickradar.admin.status:
+    description: Shows the health of TickRadar with /tickradar status.
+    default: op
+  tickradar.admin.reload:
+    description: Reloads the configuration and messages with /tickradar reload.
+    default: op
+  tickradar.admin.discord:
+    description: Sends a test message to the Discord webhook with /tickradar discord test.
+    default: op
+  tickradar.admin:
+    description: Every TickRadar permission except tickradar.use.
+    default: op
+    children:
+      tickradar.display: true
+      tickradar.alerts: true
+      tickradar.admin.regions: true
+      tickradar.admin.teleport: true
+      tickradar.admin.status: true
+      tickradar.admin.reload: true
+      tickradar.admin.discord: true

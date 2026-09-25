@@ -1,0 +1,97 @@
+# Messages de TickRadar (français), au format MiniMessage : https://docs.papermc.io/adventure/minimessage/format/
+# Modifiez librement : les clés absentes sont reprises du fichier interne, et TickRadar ne réécrit jamais ce fichier.
+# Appliquez vos changements avec /tickradar reload.
+#
+# Balises de région : <region> (R12, ou G pour la région globale), <tps> (5 s), <tps_1m>, <mspt> (moyenne 5 s),
+# <mspt_avg>, <mspt_max> et <mspt_p95> (sur sampling.history-seconds), <history> (secondes),
+# <players> (un nombre), <players_text> (players.one ou players.other), <status> (voir plus bas)
+# et <status_color>...</status_color> (vert, jaune, rouge ou gris).
+# La liste des régions et les alertes ont aussi <world> (nom du monde), <x> et <z> (coordonnées de bloc d'un joueur
+# de la région), <region_players> (regions.players.one ou regions.players.other) et <teleport>
+# (le lien teleport.link, cliquable).
+
+prefix: "<dark_aqua>[TickRadar]</dark_aqua> "
+
+status:
+  ok: "normale"
+  warning: "ralentie"
+  critical: "critique"
+  unavailable: "indisponible"
+
+players:
+  one: "<count> joueur ici"
+  other: "<count> joueurs ici"
+
+display:
+  names:
+    bossbar: "barre de boss"
+    actionbar: "barre d'action"
+    tab: "pied de la liste des joueurs"
+  bossbar: "Région <region>\u00A0: <tps> TPS · <mspt> ms"
+  actionbar: "<status_color><tps> TPS · <mspt> ms</status_color> <gray>(max <mspt_max> ms)</gray>"
+  tab-footer: "<gray>Région <region>\u00A0: <status_color><tps> TPS · <mspt> ms</status_color> · <players_text></gray>"
+  unavailable: "<gray>Région <region>\u00A0: santé indisponible</gray>"
+
+command:
+  region: "Votre région\u00A0: <status_color><tps> TPS</status_color> · <status_color><mspt> ms</status_color> <gray>(max <mspt_max> ms sur <history> s)</gray> · <players_text>"
+  global: "Région globale\u00A0: <status_color><tps> TPS</status_color> · <status_color><mspt> ms</status_color> <gray>(max <mspt_max> ms sur <history> s)</gray>"
+  not-measured: "<gray>Votre région n'a pas encore été mesurée\u00A0; réessayez dans quelques secondes.</gray>"
+  unavailable: "<gray>La santé de votre région ne peut pas être mesurée sur ce serveur\u00A0; voir la console du serveur.</gray>"
+  display-on: "Affichage «\u00A0<display>\u00A0» activé."
+  display-off: "Affichage «\u00A0<display>\u00A0» masqué."
+  display-disabled: "<red>L'affichage «\u00A0<display>\u00A0» est désactivé sur ce serveur.</red>"
+  alerts-on: "Vous recevrez désormais les alertes de TickRadar en jeu."
+  alerts-off: "Vous ne recevrez plus les alertes de TickRadar en jeu."
+  tp-done: "Téléporté dans la région <region>."
+  tp-failed: "<red>La téléportation vers la région <region> a échoué.</red>"
+  tp-unknown: "<red>La région <region> est inconnue ou n'est plus observée\u00A0; voir /tickradar regions.</red>"
+  tp-global: "<red>La région globale n'a pas de lieu où se téléporter.</red>"
+  players-only: "<red>Seuls les joueurs peuvent utiliser cette commande.</red>"
+  reload-rcon: "Rechargement de TickRadar\u00A0; le résultat sera écrit dans la console du serveur."
+  reload-done: "<green>TickRadar rechargé.</green>"
+  reload-done-warnings: "<yellow>TickRadar rechargé avec <warnings> avertissement(s)\u00A0; voir la console du serveur.</yellow>"
+  reload-failed: "<red>Échec du rechargement, les réglages précédents sont conservés\u00A0: <error></red>"
+  discord-test-rcon: "Envoi d'un message de test à Discord\u00A0; le résultat sera écrit dans la console du serveur."
+  discord-test-sending: "<gray>Envoi d'un message de test au webhook Discord...</gray>"
+  discord-test-sent: "<green>Message de test remis à Discord (HTTP <http>).</green>"
+  discord-test-sent-waited: "<green>Message de test remis à Discord (HTTP <http>) après <wait> s d'attente imposée par la limite de débit de Discord.</green>"
+  discord-test-not-configured: "<red>Aucun webhook Discord n'est défini\u00A0: collez-en un dans discord.webhook-url de config.yml, puis lancez /tickradar reload.</red>"
+  discord-test-invalid-url: "<red>Les alertes Discord sont désactivées\u00A0: <error>. Corrigez discord.webhook-url dans config.yml, puis lancez /tickradar reload.</red>"
+  discord-test-rejected: "<red>Discord a refusé le webhook (HTTP <http>)\u00A0: les alertes Discord sont désactivées jusqu'au prochain /tickradar reload. Le webhook a peut-être été supprimé.</red>"
+  discord-test-failed: "<red>Le message de test n'a pas pu être remis (<error>)\u00A0; voir la console du serveur.</red>"
+  discord-test-dropped: "<red>Le message de test a été abandonné\u00A0: trop de messages Discord étaient en attente.</red>"
+  discord-test-stopped: "<red>TickRadar s'arrête\u00A0: le message de test n'a pas été envoyé.</red>"
+  status-header: "<gray>État de TickRadar <version></gray>"
+  help:
+    header: "<gray>Commandes de TickRadar\u00A0:</gray>"
+    region: "<aqua>/tickradar</aqua> <gray>- la santé de votre région</gray>"
+    display: "<aqua>/tickradar bossbar|actionbar|tab [on|off]</aqua> <gray>- afficher ou masquer un affichage</gray>"
+    regions: "<aqua>/tickradar regions [page]</aqua> <gray>- les régions avec des joueurs, la plus lente en tête</gray>"
+    tp: "<aqua>/tickradar tp R12</aqua> <gray>- se téléporter dans une région listée par /tickradar regions</gray>"
+    alerts: "<aqua>/tickradar alerts [on|off]</aqua> <gray>- recevoir ou non les alertes en jeu</gray>"
+    status: "<aqua>/tickradar status</aqua> <gray>- la santé de TickRadar lui-même</gray>"
+    reload: "<aqua>/tickradar reload</aqua> <gray>- recharger les réglages et les messages</gray>"
+    discord: "<aqua>/tickradar discord test</aqua> <gray>- envoyer un message de test au webhook Discord</gray>"
+
+teleport:
+  link: "<aqua>[Téléporter]</aqua>"
+  hover: "Se téléporter dans la région <region>"
+
+regions:
+  header: "<gray>Régions avec des joueurs, la plus lente en tête (page <page>/<pages>)\u00A0:</gray>"
+  global: "<white><region></white> <gray>région globale ·</gray> <status_color><tps> TPS · <mspt> ms</status_color> <gray>(max <mspt_max> ms)</gray>"
+  region: "<white><region></white> <gray>du monde «\u00A0<world>\u00A0», vers X <x>, Z <z> · <region_players> ·</gray> <status_color><tps> TPS · <mspt> ms</status_color> <gray>(max <mspt_max> ms)</gray> <teleport>"
+  unavailable: "<white><region></white> <gray>du monde «\u00A0<world>\u00A0», vers X <x>, Z <z> · <region_players> · santé indisponible</gray> <teleport>"
+  players:
+    one: "<count> joueur"
+    other: "<count> joueurs"
+  none: "<gray>Aucune région n'a encore été mesurée\u00A0; réessayez dans quelques secondes.</gray>"
+  next: "<aqua>[Page suivante\u00A0: /tickradar regions <page>]</aqua>"
+  footer: "<gray>Seules les régions avec des joueurs sont listées. Utilisez /tps (Folia) ou spark pour une vue complète.</gray>"
+
+alert:
+  slow: "La région <region> du monde «\u00A0<world>\u00A0», vers X <x>, Z <z> (<region_players>), est à <status_color><mspt> ms</status_color> (<status>). <teleport>"
+  recovered: "La région <region> du monde «\u00A0<world>\u00A0», vers X <x>, Z <z>, est revenue à la normale\u00A0: <mspt> ms."
+  ended: "La région <region> du monde «\u00A0<world>\u00A0», vers X <x>, Z <z>, n'est plus observée\u00A0: il n'y reste aucun joueur."
+  global-slow: "La région globale <region> est à <status_color><mspt> ms</status_color> (<status>)."
+  global-recovered: "La région globale <region> est revenue à la normale\u00A0: <mspt> ms."

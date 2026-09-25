@@ -1,0 +1,12 @@
+build/
+out/
+.gradle/
+*.class
+run/
+test-server/
+*.log
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
