@@ -15,8 +15,17 @@ region.
 
 ## Screenshots
 
-*(to be added before release: boss bar and action bar in game, `/tickradar regions`, an in-game alert,
-a Discord alert message)*
+**Your own region, live:** boss bar (top) and tab-list footer (bottom), coloured by status.
+
+![Boss bar and tab-list footer showing the TPS and MSPT of the player's region](docs/images/displays.png)
+
+**`/tickradar regions`:** every region with players, slowest first, with a one-click teleport.
+
+![/tickradar regions listing the global region and three player regions](docs/images/regions.png)
+
+**Discord alert** when a region starts to lag:
+
+![Discord alert: region R3 is at 62.0 ms (critical)](docs/images/discord-alert.png)
 
 ## Features
 
